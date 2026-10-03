@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+
+  satellite-service:
+    image: satellite-service:1.0
+    container_name: satellite-container
+    ports:
+      - "5000:5000"
+    networks:
+      - satellite-network
+
+  image-service:
+    image: image-service:1.0
+    container_name: image-container
+    ports:
+      - "5001:5001"
+    networks:
+      - satellite-network
+
+  analysis-service:
+    image: analysis-service:1.0
+    container_name: analysis-container
+    ports:
+      - "5002:5002"
+    networks:
+      - satellite-network
+
+networks:
+  satellite-network:
+    driver: bridge
